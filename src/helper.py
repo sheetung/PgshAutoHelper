@@ -10,7 +10,7 @@ import httpx
 from httpx import URL
 from loguru import logger
 
-PGSH_ACCOUNTS: Final[List[str]] = []
+PGSH_ACCOUNTS: Final[str] = ""
 APP_VERSION: Final[str] = "1.82.1"
 APP_SECRET: Final[str] = "nFU9pbG8YQoAe1kFh+E7eyrdlSLglwEJeA0wwHB1j5o="
 ALIPAY_APP_SECRET: Final[str] = "Ew+ZSuppXZoA9YzBHgHmRvzt0Bw1CpwlQQtSl49QNhY="
@@ -230,7 +230,7 @@ async def main():
             "value"
         ].split(";")
     except NameError:
-        accounts: List[str] = PGSH_ACCOUNTS
+        accounts: List[str] = PGSH_ACCOUNTS.split(";")
     tasks = [asyncio.create_task(helper(*account.split(":"))) for account in accounts]
     await asyncio.gather(*tasks)
 
