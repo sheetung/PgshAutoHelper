@@ -364,7 +364,7 @@ async def main():
     delay_seconds = random.uniform(0, 600)  # 生成0到600之间的随机浮点数
     minutes = int(delay_seconds // 60)
     seconds = int(delay_seconds % 60)
-    logger.info(f"随机延时 {minutes}分{seconds}秒后开始执行任务...")
+    print(f"随机延时 {minutes}分{seconds}秒后开始执行任务...")
     await asyncio.sleep(delay_seconds)  # 异步等待延时结束
     # 收集所有账号的执行结果
     results: List[Dict] = []
